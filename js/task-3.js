@@ -1,11 +1,18 @@
-function getElementWidth(content, padding, border) {
-  return (
-    Number.parseFloat(content) +
-    2 * Number.parseFloat(padding) +
-    2 * Number.parseFloat(border)
-  );
+function checkForSpam(message) {
+  if (
+    message.toLowerCase().includes('spam') ||
+    message.toLowerCase().includes('sale')
+  ) {
+    console.log(true);
+  } else {
+    console.log(false);
+  }
 }
 
-console.log(getElementWidth('50px', '8px', '4px')); // 74
-console.log(getElementWidth('60px', '12px', '8.5px')); // 101
-console.log(getElementWidth('200px', '0px', '0px')); // 200
+checkForSpam('Latest technology news'); // false
+checkForSpam('JavaScript weekly newsletter'); // false
+checkForSpam('Get best sale offers now!'); // true
+checkForSpam('Amazing SalE, only tonight!'); // true
+checkForSpam('Trust me, this is not a spam message'); // true
+checkForSpam('Get rid of sPaM emails. Our book in on sale!'); // true
+checkForSpam('[SPAM] How to earn fast money?'); // true
